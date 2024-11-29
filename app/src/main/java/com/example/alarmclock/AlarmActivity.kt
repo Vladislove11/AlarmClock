@@ -23,7 +23,7 @@ class AlarmActivity : AppCompatActivity() {
 
         stopAlarmButtonBTN. setOnClickListener {
             finish()
-            exitProcess(0)
+            AlarmReceiver.ringtone?.stop()
         }
     }
 

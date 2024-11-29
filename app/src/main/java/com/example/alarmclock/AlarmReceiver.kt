@@ -9,9 +9,9 @@ import androidx.appcompat.app.AppCompatActivity.RESULT_OK
 
 class AlarmReceiver : BroadcastReceiver() {
     companion object{
-
+        var ringtone: Ringtone? = null
     }
-    private var ringtone: Ringtone? = null
+    //var ringtone: Ringtone? = null
 
     override fun onReceive(context: Context?, intent: Intent?) {
         var notificationUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)

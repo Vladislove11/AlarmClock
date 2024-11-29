@@ -3,10 +3,13 @@ package com.example.alarmclock
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.icu.util.Calendar
+import android.icu.util.TimeUnit
 import android.os.Bundle
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.ListView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -20,20 +23,13 @@ import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
-
-
-    private val LAUNCH_SECOND_ACTIVITY = 101
     private lateinit var addAlarmTimeButtonBtN: Button
     private lateinit var listViewLV: ListView
-   // private val listAlarm = mutableListOf<AlarmClock>()
+
     private var listAlarmAdapter: ListAlarmAdapter? = null
-
     private val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-
     private var calendar: Calendar = Calendar.getInstance()
     lateinit var listViewModel: ListViewModel
-
-   // private var alarms = mutableListOf<AlarmClock>()
 
     @SuppressLint("MissingInflatedId", "WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,9 +71,11 @@ class MainActivity : AppCompatActivity() {
 
                 listViewModel.listAlarm.forEach{alarmHelper.setAlarm(it)}
             }
+
             materialTimePicker.show(supportFragmentManager, "tag_picker")
         }
 
     }
+
 }
 

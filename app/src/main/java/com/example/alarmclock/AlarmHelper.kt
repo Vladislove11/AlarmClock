@@ -5,6 +5,7 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 
 class AlarmHelper(private val context: Context) {
     @SuppressLint("ServiceCast")
@@ -30,7 +31,7 @@ class AlarmHelper(private val context: Context) {
     }
 
     // Удалить будильник
-    fun cancelAlarm(alarm: Alarm) {
+    fun cancelAlarm(alarm: AlarmClock) {
         val intent = Intent(context, AlarmReceiver::class.java)
         val pendingIntent = PendingIntent.getBroadcast(
             context,

@@ -40,13 +40,7 @@ class ListAlarmAdapter(context: Context, alarmList: MutableList <AlarmClock>): A
             Toast.makeText(context, "$position $isChecked", Toast.LENGTH_SHORT).show()
         })
         val nameAlarmLV = view?.findViewById<TextView>(R.id.nameAlarmTV)
-
         nameAlarmLV?.text = alarmClock?.timeFormat
-        if (alarmClock != null) {
-            switchCompatSC?.isChecked = alarmClock.switch
-        }else{
-            switchCompatSC?.isChecked = false
-        }
 
         return  view!!
     }

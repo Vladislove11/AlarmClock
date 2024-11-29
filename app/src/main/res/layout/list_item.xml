@@ -6,7 +6,8 @@
     android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="40dp"
+        android:foregroundGravity="center">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,7 +32,7 @@
                     android:id="@+id/switchCompatSC"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="false"
+                    android:checked="true"
                     app:showText="false"
                     android:layout_weight="1"/>
 

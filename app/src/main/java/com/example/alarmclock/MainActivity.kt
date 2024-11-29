@@ -24,6 +24,7 @@ import java.util.Locale
 class MainActivity : AppCompatActivity() {
 
     private lateinit var addAlarmTimeButtonBtN: Button
+    private lateinit var exitBTN: Button
     private lateinit var listViewLV: ListView
 
     private var listAlarmAdapter: ListAlarmAdapter? = null
@@ -39,10 +40,11 @@ class MainActivity : AppCompatActivity() {
         val alarmHelper = AlarmHelper(this)
 
         addAlarmTimeButtonBtN = findViewById(R.id.addAlarmTimeButtonBtN)
+        exitBTN = findViewById(R.id.exitBTN)
         listViewLV = findViewById(R.id.listViewLV)
 
         listViewModel = ViewModelProvider(this)[ListViewModel::class.java]
-        listAlarmAdapter = ListAlarmAdapter(this@MainActivity, listViewModel.listAlarm)
+        listAlarmAdapter = ListAlarmAdapter(this@MainActivity, listViewModel.listAlarm, alarmHelper)
         listViewLV.adapter = listAlarmAdapter
 
         listViewModel.listAlarmData.observe(this,{ listAlarm ->
@@ -73,6 +75,10 @@ class MainActivity : AppCompatActivity() {
             }
 
             materialTimePicker.show(supportFragmentManager, "tag_picker")
+        }
+
+        exitBTN.setOnClickListener{
+            finishAffinity()
         }
 
     }

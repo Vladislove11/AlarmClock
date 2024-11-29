@@ -12,7 +12,7 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
-class ListAlarmAdapter(context: Context, alarmList: MutableList <AlarmClock>): ArrayAdapter<AlarmClock>(
+class ListAlarmAdapter(context: Context, alarmList: MutableList <AlarmClock>, private val alarmHelper: AlarmHelper): ArrayAdapter<AlarmClock>(
     context,
     R.layout.list_item,
     alarmList
@@ -25,7 +25,7 @@ class ListAlarmAdapter(context: Context, alarmList: MutableList <AlarmClock>): A
             view = LayoutInflater.from(context).inflate(R.layout.list_item, parent, false)
         }
 
-        val alarmHelper = AlarmHelper(context)
+        //val alarmHelper = AlarmHelper(context)
         val switchCompatSC = view?.findViewById<androidx.appcompat.widget.SwitchCompat>(R.id.switchCompatSC)
 
         switchCompatSC?.setOnCheckedChangeListener(null)
@@ -37,7 +37,6 @@ class ListAlarmAdapter(context: Context, alarmList: MutableList <AlarmClock>): A
                     alarmHelper.cancelAlarm(alarmClock)
                 }
             }
-            Toast.makeText(context, "$position $isChecked", Toast.LENGTH_SHORT).show()
         })
         val nameAlarmLV = view?.findViewById<TextView>(R.id.nameAlarmTV)
         nameAlarmLV?.text = alarmClock?.timeFormat
